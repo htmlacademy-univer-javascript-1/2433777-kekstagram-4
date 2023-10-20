@@ -31,17 +31,15 @@ const DESCRIPTIONS = `Ой-ой
 Криптиды существуют!
 Нужно больше золота`.split(/\n/g);
 
-function getRandomNumber (min, max) {
+const getRandomNumber = (min, max) => {
   const lower = Math.ceil(Math.min(Math.abs(min), Math.abs(max)));
   const upper = Math.floor(Math.max(Math.abs(min), Math.abs(max)));
   const result = Math.random() * (upper - lower + 1) + lower;
 
   return Math.floor(result);
-}
+};
 
-function getRandomArrayElement (elements) {
-  return elements[getRandomNumber(0, elements.length - 1)];
-}
+const getRandomArrayElement = (elements) => elements[getRandomNumber(0, elements.length - 1)];
 
 function createRandomIdFromRangeGenerator (min, max) {
   const previousValues = [];
@@ -67,7 +65,7 @@ function generateText (sentence) {
 }
 
 const getObjectId = createRandomIdFromRangeGenerator(1, OBJECT_ARRAY_LENGTH);
-function createObject () {
+const createObject = () => {
   const idValue = getObjectId();
   return {
     id: idValue,
@@ -76,7 +74,7 @@ function createObject () {
     likes: getRandomNumber(MIN_LIKES, MAX_LIKES),
     comments: Array.from({length: getRandomNumber(MIN_COMMENTS, MAX_COMMENTS)}, createComment(createRandomIdFromRangeGenerator(MIN_COMMENTS, MAX_COMMENTS))),
   };
-}
+};
 
 function createComment (getIdFunction) {
   return function () {
