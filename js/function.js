@@ -25,3 +25,17 @@ const extractDigits = (string) => {
   return result === '' ? NaN : parseInt(result, 10);
 };
 extractDigits('2023 год');
+
+function timeStringToMinutes(timeString) {
+  return timeString.split(':').reduce((accumulator, currentValue, index, array) =>
+    accumulator + Number(currentValue) * Math.pow(60, array.length - index - 1), 0);
+}
+
+function isWithinSchedule(workdayStart, workDayFinish, startTime, durationMinutes) {
+  const redactedWorkdayStart = timeStringToMinutes(workdayStart);
+  const redactedWorkdayFinish = timeStringToMinutes(workDayFinish);
+  const redactedStartTime = timeStringToMinutes(startTime);
+
+  return redactedStartTime >= redactedWorkdayStart && redactedStartTime + durationMinutes <= redactedWorkdayFinish;
+}
+isWithinSchedule('08:00', '17:30', '14:00', 90); //true
