@@ -89,3 +89,9 @@ const createPhotoObject = () => {
 };
 
 const photosArray = Array.from({length: PHOTO_OBJECT_ARRAY_LENGTH}, createPhotoObject);
+
+//eslint test var never used fix
+function func(arr)  {
+  return arr;
+}
+func(photosArray);
