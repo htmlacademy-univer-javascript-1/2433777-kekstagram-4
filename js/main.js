@@ -1,3 +1,4 @@
+
 import {
   PHOTO_OBJECT_ARRAY_LENGTH,
   createPhotoObject
@@ -7,3 +8,4 @@ const photosArray = Array.from({length: PHOTO_OBJECT_ARRAY_LENGTH}, createPhotoO
 const lintIssue = (arr) => arr;
 lintIssue(photosArray);
 //Для того чтобы линт не ругался :)
+
