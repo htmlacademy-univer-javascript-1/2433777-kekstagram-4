@@ -1,3 +1,4 @@
+
 import {
   PHOTO_OBJECT_ARRAY_LENGTH,
   createPhotoObject
