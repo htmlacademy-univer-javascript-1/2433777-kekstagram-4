@@ -5,13 +5,13 @@ import {
   generateText
 } from './util.js';
 
-const MIN_LIKES = 15;
-const MAX_LIKES = 200;
-const MIN_COMMENTS = 0;
-const MAX_COMMENTS = 30;
-const MIN_AVATAR = 1;
-const MAX_AVATAR = 6;
-const PHOTO_OBJECT_ARRAY_LENGTH = 25;
+export const MIN_LIKES = 15;
+export const MAX_LIKES = 200;
+export const MIN_COMMENTS = 0;
+export const MAX_COMMENTS = 30;
+export const MIN_AVATAR = 1;
+export const MAX_AVATAR = 6;
+export const PHOTO_OBJECT_ARRAY_LENGTH = 25;
 
 const NAMES = [
   'Пубертатная язва',
@@ -52,7 +52,7 @@ function createComment(getIdFunction) {
   };
 }
 
-const createPhotoObject = () => {
+export const createPhotoObject = () => {
   const idValue = getPhotoObjectId();
   return {
     id: idValue,
