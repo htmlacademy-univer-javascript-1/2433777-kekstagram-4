@@ -4,7 +4,10 @@ export const commentsLoaderElement = bigPictureElement.querySelector('.comments-
 const commentListElement = bigPictureElement.querySelector('.social__comments');
 const commentElement = document.querySelector('.social__comment');
 
-const createComment = ({avatar, name, message}) =>{
+let allComments = [];
+let commentsIndex = 0;
+
+const createComment = ({avatar, name, message}) => {
   const comment = commentElement.cloneNode(true);
 
   comment.querySelector('.social__picture').src = avatar;
@@ -14,15 +17,26 @@ const createComment = ({avatar, name, message}) =>{
   return comment;
 };
 
-const renderComments = (comments) =>{
+const renderComments = () => {
   commentListElement.innerHTML = '';
 
   const fragment = document.createDocumentFragment();
-  comments.forEach((item) => {
-    const comment = createComment(item);
+
+  for (let i = 0; i < 5 && commentsIndex < allComments.length; i++) {
+    const comment = createComment(allComments[commentsIndex]);
     fragment.append(comment);
-  });
+    commentsIndex++;
+  }
+
   commentListElement.append(fragment);
+
+  commentsLoaderElement.classList.toggle('hidden', commentsIndex >= allComments.length);
 };
 
-export { renderComments };
+const setAllComments = (comments) => {
+  allComments = comments;
+  commentsIndex = 0;
+  renderComments();
+};
+
+export { setAllComments, renderComments };
