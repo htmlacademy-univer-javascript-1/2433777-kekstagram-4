@@ -9,7 +9,7 @@ const renderGallery = () =>{
   container.addEventListener('click', (evt) =>{
     const thumbnail = evt.target.closest('[data-thumbnail-id]');
     if(!thumbnail){
-      throw 'Не существует такого элемента';
+      // throw 'Не существует такого элемента';
     }
     evt.preventDefault();
     const picture = photos.find((item) => item.id === +thumbnail.dataset.thumbnailId);
