@@ -39,8 +39,6 @@ const showBigPicture = (data) => {
   document.addEventListener('keydown', onDocumentKeyDown);
 
   renderPictureDetails(data);
-
-  // Добавляем обработчик события для кнопки "Загрузить ещё"
   commentsLoader.addEventListener('click', loadMoreComments);
 };
 
