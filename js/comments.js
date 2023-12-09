@@ -1,14 +1,14 @@
-export const bigPictureElement = document.querySelector('.big-picture');
-export const commentCountElement = bigPictureElement.querySelector('.social__comment-count');
-export const commentsLoaderElement = bigPictureElement.querySelector('.comments-loader');
-const commentListElement = bigPictureElement.querySelector('.social__comments');
-const commentElement = document.querySelector('.social__comment');
+export const bigPicture = document.querySelector('.big-picture');
+export const commentCount = bigPicture.querySelector('.social__comment-count');
+export const commentsLoader = bigPicture.querySelector('.comments-loader');
+const commentList = bigPicture.querySelector('.social__comments');
+const socialComment = document.querySelector('.social__comment');
 
 let allComments = [];
 let commentsIndex = 0;
 
 const createComment = ({avatar, name, message}) => {
-  const comment = commentElement.cloneNode(true);
+  const comment = socialComment.cloneNode(true);
 
   comment.querySelector('.social__picture').src = avatar;
   comment.querySelector('.social__picture').alt = name;
@@ -18,7 +18,7 @@ const createComment = ({avatar, name, message}) => {
 };
 
 const renderComments = () => {
-  commentListElement.innerHTML = '';
+  commentList.innerHTML = '';
 
   const fragment = document.createDocumentFragment();
 
@@ -28,9 +28,9 @@ const renderComments = () => {
     commentsIndex++;
   }
 
-  commentListElement.append(fragment);
+  commentList.append(fragment);
 
-  commentsLoaderElement.classList.toggle('hidden', commentsIndex >= allComments.length);
+  commentsLoader.classList.toggle('hidden', commentsIndex >= allComments.length);
 };
 
 const setAllComments = (comments) => {

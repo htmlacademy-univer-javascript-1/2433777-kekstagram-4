@@ -1,3 +1,5 @@
+import { resetScale } from './scalePhoto.js';
+import { resetEffect, initEffect } from './effects.js';
 const MAX_HASHTAG_COUNT = 5;
 const regExp = /^#[a-zа-яё0-9]{0,19}$/i;
 const body = document.querySelector('body');
@@ -18,6 +20,7 @@ const pristine = new Pristine(form, {
 });
 
 const showModal = () => {
+  initEffect();
   overlay.classList.remove('hidden');
   body.classList.add('modal-open');
   document.addEventListener('keydown', onDocumentKeydown);
@@ -25,6 +28,8 @@ const showModal = () => {
 
 const hideModal = () => {
   form.reset();
+  resetEffect();
+  resetScale();
   pristine.reset();
   overlay.classList.add('hidden');
   body.classList.remove('modal-open');

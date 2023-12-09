@@ -62,6 +62,7 @@ export const createPhotoObject = () => {
     comments: Array.from({length: getRandomNumber(MIN_COMMENTS, MAX_COMMENTS)}, createComment(createRandomIdFromRangeGenerator(MIN_COMMENTS, MAX_COMMENTS))),
   };
 };
+
 createPhotoObject();
 const getPictures = () => Array.from({length: PHOTO_OBJECT_ARRAY_LENGTH}, createPhotoObject);
 export  { getPictures };

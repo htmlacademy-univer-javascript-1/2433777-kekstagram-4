@@ -1,9 +1,9 @@
-import { bigPictureElement, setAllComments, commentCountElement, commentsLoaderElement, renderComments } from './comments.js';
-const bodyElement = document.querySelector('body');
-const cancelButtonElement = bigPictureElement.querySelector('.big-picture__cancel');
+import { bigPicture, setAllComments, commentCount, commentsLoader, renderComments } from './comments.js';
+const body = document.querySelector('body');
+const cancelButton = bigPicture.querySelector('.big-picture__cancel');
 const hideBigPicture = () => {
-  bigPictureElement.classList.add('hidden');
-  bodyElement.classList.remove('modal-open');
+  bigPicture.classList.add('hidden');
+  body.classList.remove('modal-open');
   document.removeEventListener('keydown', onDocumentKeyDown);
 };
 
@@ -19,10 +19,10 @@ const onCancelButtonClick = () => {
 };
 
 const renderPictureDetails = ({url, likes, description, comments}) => {
-  bigPictureElement.querySelector('.big-picture__img img').src = url;
-  bigPictureElement.querySelector('.big-picture__img img').alt = description;
-  bigPictureElement.querySelector('.likes-count').textContent = likes;
-  bigPictureElement.querySelector('.social__caption').textContent = description;
+  bigPicture.querySelector('.big-picture__img img').src = url;
+  bigPicture.querySelector('.big-picture__img img').alt = description;
+  bigPicture.querySelector('.likes-count').textContent = likes;
+  bigPicture.querySelector('.social__caption').textContent = description;
 
   setAllComments(comments);
 };
@@ -32,18 +32,18 @@ const loadMoreComments = () => {
 };
 
 const showBigPicture = (data) => {
-  bigPictureElement.classList.remove('hidden');
-  bodyElement.classList.add('modal-open');
-  commentsLoaderElement.classList.remove('hidden');
-  commentCountElement.classList.add('hidden');
+  bigPicture.classList.remove('hidden');
+  body.classList.add('modal-open');
+  commentsLoader.classList.remove('hidden');
+  commentCount.classList.add('hidden');
   document.addEventListener('keydown', onDocumentKeyDown);
 
   renderPictureDetails(data);
 
   // Добавляем обработчик события для кнопки "Загрузить ещё"
-  commentsLoaderElement.addEventListener('click', loadMoreComments);
+  commentsLoader.addEventListener('click', loadMoreComments);
 };
 
-cancelButtonElement.addEventListener('click', onCancelButtonClick);
+cancelButton.addEventListener('click', onCancelButtonClick);
 
 export { showBigPicture };
