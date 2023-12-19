@@ -17,7 +17,6 @@ const renderGallery = (photos) =>{
   renderThumbnails(photos);
 };
 
-
 export{renderGallery};
 
 
