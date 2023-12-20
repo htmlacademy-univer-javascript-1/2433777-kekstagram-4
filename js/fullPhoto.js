@@ -71,18 +71,20 @@ const renderPictureDetails = ({url, likes, description}) =>{
 };
 
 const showBigPicture = (data) => {
-  bigPicture.classList.remove('hidden');
-  document.body.classList.add('modal-open');
-  document.addEventListener('keydown', onDocumentKeyDown);
+  if (data && data.comments) {
+    bigPicture.classList.remove('hidden');
+    document.body.classList.add('modal-open');
+    document.addEventListener('keydown', onDocumentKeyDown);
 
-  const commentsArray = Array.isArray(data.comments) ? data.comments : [];
-  const commentsLength = commentsArray.length;
+    const commentsArray = Array.isArray(data.comments) ? data.comments : [];
+    const commentsLength = commentsArray.length;
 
-  visibleCommentsCount.textContent = commentsLength < COMMENTS_TO_LOAD ? commentsLength : COMMENTS_TO_LOAD;
-  commentsCount.textContent = commentsLength;
+    visibleCommentsCount.textContent = commentsLength < COMMENTS_TO_LOAD ? commentsLength : COMMENTS_TO_LOAD;
+    commentsCount.textContent = commentsLength;
 
-  renderPictureDetails(data);
-  renderComments(commentsArray);
+    renderPictureDetails(data);
+    renderComments(commentsArray);
+  }
 };
 
 const updateCurrentSocialComments = (commentsVisibleLenght) => {
