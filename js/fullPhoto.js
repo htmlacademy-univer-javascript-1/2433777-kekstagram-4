@@ -74,13 +74,15 @@ const showBigPicture = (data) => {
   bigPicture.classList.remove('hidden');
   document.body.classList.add('modal-open');
   document.addEventListener('keydown', onDocumentKeyDown);
-  visibleCommentsCount.textContent = data.comments.length < COMMENTS_TO_LOAD ? data.comments.length : COMMENTS_TO_LOAD;
-  commentsCount.textContent = data.comments.length;
+  const commentsLength = data.comments && data.comments.length ? data.comments.length : 0;
+
+  visibleCommentsCount.textContent = commentsLength < COMMENTS_TO_LOAD ? commentsLength : COMMENTS_TO_LOAD;
+  commentsCount.textContent = commentsLength;
 
   renderPictureDetails(data);
   renderComments(data.comments);
-
 };
+
 
 const updateCurrentSocialComments = (commentsVisibleLenght) => {
   visibleCommentsCount.textContent = commentsVisibleLenght;
