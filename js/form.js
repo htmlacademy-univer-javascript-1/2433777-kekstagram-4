@@ -48,6 +48,7 @@ fileInput.addEventListener('change', () => {
   });
 });
 
+
 uploadForm.addEventListener('submit', async (evt) => {
   evt.preventDefault();
   const isValid = pristine.validate();
@@ -64,3 +65,4 @@ uploadForm.addEventListener('submit', async (evt) => {
     }
   }
 });
+

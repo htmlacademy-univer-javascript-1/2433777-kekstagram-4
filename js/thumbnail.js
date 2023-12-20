@@ -1,6 +1,7 @@
+const picturesWrapper = document.querySelector('.pictures');
+const thumbnailPattern = document.querySelector('#picture').content.querySelector('.picture');
+
 const renderThumbnails = function(pictures){
-  const picturesWrapper = document.querySelector('.pictures');
-  const thumbnailPattern = document.querySelector('#picture').content.querySelector('.picture');
   const thumbnailsListFragment = document.createDocumentFragment();
 
   pictures.forEach(({url, description, likes, comments, id}) => {
@@ -16,4 +17,8 @@ const renderThumbnails = function(pictures){
   picturesWrapper.appendChild(thumbnailsListFragment);
 };
 
-export {renderThumbnails };
+function removePictures(){
+  picturesWrapper.querySelectorAll('.picture').forEach((p) => p.remove());
+}
+
+export {renderThumbnails, removePictures };
