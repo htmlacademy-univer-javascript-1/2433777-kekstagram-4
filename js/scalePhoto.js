@@ -1,5 +1,3 @@
-import { preview } from './effects.js';
-
 const SCALE = {
   STEP: 25,
   MIN: 25,
@@ -9,30 +7,24 @@ const SCALE = {
 
 const upload = document.querySelector('.img-upload');
 const scaleInput = upload.querySelector('.scale__control--value');
-const increaseButton = upload.querySelector('.scale__control--bigger');
 const decreaseButton = upload.querySelector('.scale__control--smaller');
+const increaseButton = upload.querySelector('.scale__control--bigger');
+const preview = upload.querySelector('.img-upload__preview img');
 
 const scalePhoto = (value) => {
   preview.style.transform = `scale(${value / 100})`;
   scaleInput.value = `${value}%`;
 };
 
-const adjustScale = (step) => {
-  const currentValue = parseInt(scaleInput.value, 10);
-  const newValue = Math.max(Math.min(currentValue + step, SCALE.MAX), SCALE.MIN);
-  scalePhoto(newValue);
+const onDecreaseButtonClick = () => {
+  scalePhoto(parseInt(scaleInput.value, 10) - SCALE.STEP > 0 ? parseInt(scaleInput.value, 10) - SCALE.STEP : SCALE.MIN);
 };
 
-const decreasePhoto = () => {
-  adjustScale(-SCALE.STEP);
+const onIncreaseButtonClick = () => {
+  scalePhoto(parseInt(scaleInput.value, 10) + SCALE.STEP <= 100 ? parseInt(scaleInput.value, 10) + SCALE.STEP : SCALE.MAX);
 };
 
-const increasePhoto = () => {
-  adjustScale(SCALE.STEP);
-};
+export const resetScale = () => scalePhoto(SCALE.DEFAULT);
 
-decreaseButton.addEventListener('click', decreasePhoto);
-increaseButton.addEventListener('click', increasePhoto);
-
-const resetScale = () => scalePhoto(SCALE.DEFAULT);
-export { resetScale };
+decreaseButton.addEventListener('click', onDecreaseButtonClick);
+increaseButton.addEventListener('click', onIncreaseButtonClick);
