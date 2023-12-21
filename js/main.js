@@ -1,6 +1,6 @@
 import {renderGallery} from'./picturesGallery.js';
 import { getData } from './api.js';
-import { showAlert } from './alerts.js';
+import { showAlert } from './utils.js';
 import { showFilters } from './filter.js';
 import './form.js';
 import './scalePhoto.js';
