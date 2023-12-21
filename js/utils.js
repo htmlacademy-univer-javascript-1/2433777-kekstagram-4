@@ -1,3 +1,4 @@
+const REMOVE_ALERT_TIMEOUT = 5000;
 const getRandomNumber = (min, max) =>{
   const lower = Math.ceil(Math.min(min, max));
   const upper = Math.floor(Math.max(min, max));
@@ -32,7 +33,7 @@ const showAlert = (message) => {
 
   setTimeout(() => {
     alertContainer.remove();
-  }, 5000);
+  }, REMOVE_ALERT_TIMEOUT);
 };
 
 export{ debounce, getRandomNumber, showAlert };
